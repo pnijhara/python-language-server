@@ -288,7 +288,7 @@ foo.s"""
     assert completions[0]['label'] == 'spam()'
 
 
-@pytest.mark.skipif(PY2 or not LINUX or not CI, reason="tested on linux and python 3 only")
+@pytest.mark.skipif(os.name == 'nt' or PY2, reason="Tested on unix and py2 only")
 def test_jedi_completion_environment(config):
     # Content of doc to test completion
     doc_content = '''import logh

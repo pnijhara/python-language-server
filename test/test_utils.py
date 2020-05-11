@@ -3,6 +3,7 @@ import time
 import sys
 
 import mock
+from flaky import flaky
 
 from pyls import _utils
 
@@ -21,6 +22,7 @@ class MockWorkspace(object):
         self.root_path = ''
 
 
+@flaky(max_runs=3, min_passes=1)
 def test_debounce():
     interval = 0.1
     obj = mock.Mock()
